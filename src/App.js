@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import "./styles.css";
+import React, { useState } from 'react';
+import './styles.css';
 
 const Todo = ({ todo, index, completeTodo, removeTodo }) => {
   return (
     <>
-      <div className="todo">{todo.text}</div>;
+      <div className="todo">{todo[index].text}</div>
+
       <div>
         <button onClick={() => completeTodo(index)}> Compleste </button>
         <button onClick={() => removeTodo(index)}> X </button>
@@ -14,22 +15,19 @@ const Todo = ({ todo, index, completeTodo, removeTodo }) => {
 };
 
 const TodoForm = ({ addTodo }) => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   const handleSubmit = e => {
+    console.log(e);
+    console.log(value);
     e.preventDefault();
     if (!value) return;
     addTodo(value);
-    setValue("");
+    setValue('');
   };
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        className="input"
-        value={value}
-        onChange={e => setValue(e.target.value)}
-      />
+      <input type="text" className="input" value={value} onChange={e => setValue(e.target.value)} />
     </form>
   );
 };
