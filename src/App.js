@@ -10,7 +10,9 @@ const App = () => {
   return (
     <div className="app">
       <div className="todo-list" />
-      {todo.map()}
+      {todo.map((item, index) => (
+        <Todo key={item} />
+      ))}
     </div>
   );
 };
